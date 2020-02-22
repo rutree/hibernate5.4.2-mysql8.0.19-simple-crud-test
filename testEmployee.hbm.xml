@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--映射文件需要一個dtd來指定-->
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- 該文件用於配置Domain對象和表的映射關係 -->
+	<hibernate-mapping package="com.weiru.hibernate">
+		<class name="Employee" table="testemployee">
+		<!-- id元素用於主鍵屬性 -->
+		<id name="id" column="id" type="java.lang.Integer">
+			<!-- 該元素用於指定主鍵生成策略 hilo native increment sequence  uuid -->
+		<!--  <generator class="sequence"> -->
+		<!--  <param name="sequence">emp_seq</param>-->
+		<generator class="native">
+		</generator>
+		</id>
+		<!-- 其他屬性配置 -->
+		<property name="name" type="java.lang.String">
+		<column name="name" not-null="false"></column>
+		</property>
+		<property name="email" type="java.lang.String">
+		<column name="email" not-null="false"></column>
+		</property>
+		<property name="hiredate" type="java.util.Date">
+		<column name="hiredate" not-null="false"></column>
+		</property>
+		</class>
+	</hibernate-mapping>

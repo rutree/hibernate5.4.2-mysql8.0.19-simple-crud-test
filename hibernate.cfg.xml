@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+<session-factory>
+	<!-- hibernate設計者提供了一些常用設置 --> 
+	<!-- 配置使用的Driver -->
+	<property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+	<property name="hibernate.connection.username">root</property>
+	<property name="hibernate.connection.password">8474512</property>
+	<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/employee?allowPublicKeyRetrieval=true&amp;serverTimezone=UTC&amp;characterEncoding=utf8&amp;useUnicode=true&amp;useSSL=false</property>
+	<!-- 配置Dialect語言 明確告訴hibernate連接是哪個數據庫 -->
+	<property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
+	
+		<property name="current_session_context_class">thread</property>
+		<!-- #hibernate.show_sql true 
+			 #hibernate.format_sql true
+		-->
+		<!-- 將hibernate生成的sql語句列印到控制檯 -->
+		<property name="hibernate.show_sql">true</property>
+		<!-- 將hibernate生成的sql語句格式化(語法縮排) -->
+		<property name="hibernate.format_sql">true</property>
+		<!-- 
+		## auto schema export  自動匯出表結構. 自動建表
+		#hibernate.hbm2ddl.auto create		自動建表.每次框架執行都會建立新的表.以前表將會被覆蓋,表資料會丟失.(開發環境中測試使用)
+		#hibernate.hbm2ddl.auto create-drop 自動建表.每次框架執行結束都會將所有表刪除.(開發環境中測試使用)
+		#hibernate.hbm2ddl.auto update(推薦使用) 自動生成表.如果已經存在不會再生成.如果表有變動.自動更新表(不會刪除任何資料).
+		#hibernate.hbm2ddl.auto validate	校驗.不自動生成表.每次啟動會校驗資料庫中表是否正確.校驗失敗.
+		 -->
+	<!-- 只應管理的映射文件 -->
+	<mapping resource="com/weiru/hibernate/testEmployee.hbm.xml"/>
+</session-factory>
+</hibernate-configuration>
